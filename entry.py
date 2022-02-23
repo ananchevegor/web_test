@@ -1,8 +1,9 @@
 import aiohttp
 from web import create_app
+from aiohttp import web
 
 
 app = create_app()
 
 if __name__ == '__main__':
-    aiohttp.web.run_app(app)
+    web.run_app(app)

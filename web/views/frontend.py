@@ -1,4 +1,6 @@
 import aiohttp
+from aiohttp import web
+
 
 async def index(request):
-    return aiohttp.web.Response(text='Ok')
+    return web.Response(text='OK')
