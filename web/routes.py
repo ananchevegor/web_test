@@ -1,13 +1,8 @@
-from .views import frontend
-from .views import backend
-from .database import database
-import json
-
-
-
-
+from .views import frontend, backend
+from aiohttp import web
 
 def setup_routes(app):
-    # app.router.add_post('/product', backend.new_product)
-    app.router.add_route('GET', '/', frontend.index)
-    #app.router.add_post('/new_phone', backend.create_new_product)
+    app.add_routes([web.get('/', frontend.index),
+                    web.get('/new_plagin', backend.create_new_plagin),
+                    web.get('/find_by_name', backend.find_by_name),
+                    web.get('/find_by_color', backend.find_by_color)])

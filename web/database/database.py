@@ -13,9 +13,3 @@ collections = current_db["phones"]
 
 
 
-# открываем json фвйл на чтение, чтобы занести все данные в бд
-# with open("A:\pythonLearn\web_test\web_test\web\database\data_database\data_phone.json", 'r', encoding='utf8') as p:
-#     obj = json.load(p)
-#     ins = collections.insert_many(obj)
-
-
