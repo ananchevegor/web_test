@@ -1,12 +1,11 @@
 from bson.objectid import ObjectId
 from aiohttp import web
 import json
-from web_test.web.database.database import collections, db
+from web.database.database import collections, db
 
 
 async def create_new_plagin(request):
     plagins = {
-        "_id": "123kjh12kl3j",
         "name": "Philips",
         "price": 20000
     }
@@ -23,6 +22,18 @@ async def find_by_name(request):
 async def find_by_color(request):
     color = request.query["color"]
     insert = collections.find({'color': color})
+    json_data = json.dumps(list(insert), default=str)
+    return web.Response(text=json_data)
+
+async def find_by_id(request):
+    id = request.query["id"]
+    insert = collections.find({'_id': ObjectId(id)})
+    json_data = json.dumps(list(insert), default=str)
+    return web.Response(text=json_data)
+
+async def find_by_id_else(request):
+    id = request.query["id"]
+    insert = collections.find({'_id': id})
     lst = list(insert)
     json_data = json.dumps(lst, default=str)
     return web.Response(text=json_data)
